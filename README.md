@@ -19,7 +19,7 @@
 
 3. **Запустите локальный сервер**
     ```sh
-    python3 -m manager runserver
+    python3 -m manage runserver
     ```
 
 4. **Перейдите на локальный хост**

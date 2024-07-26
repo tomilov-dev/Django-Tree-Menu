@@ -57,9 +57,9 @@ class Command(BaseCommand):
         item1_2_3 = self.crit(menu, "m3-2-3", "m3-2-3", item1_2)
 
         item1_3 = self.crit(menu, "m2-1-3", "m2-1-3", item1)
-        item1_3_1 = self.crit(menu, "m3-3-1", "m3-3-1", item1_2)
-        item1_3_2 = self.crit(menu, "m3-3-2", "m3-3-2", item1_2)
-        item1_3_3 = self.crit(menu, "m3-3-3", "m3-3-3", item1_2)
+        item1_3_1 = self.crit(menu, "m3-3-1", "m3-3-1", item1_3)
+        item1_3_2 = self.crit(menu, "m3-3-2", "m3-3-2", item1_3)
+        item1_3_3 = self.crit(menu, "m3-3-3", "m3-3-3", item1_3)
 
         item2 = self.crit(menu, "m1-2", "m1-2", None)
         item2_1 = self.crit(menu, "m2-2-1", "m2-2-1", item2)

@@ -12,6 +12,7 @@
 
 3. **Выполните миграции:**
     ```sh
+    cd test_menu
     python3 -m manage migrate
     ```
 

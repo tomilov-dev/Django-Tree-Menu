@@ -1,4 +1,5 @@
 from django import template
+from django.core.exceptions import ObjectDoesNotExist
 
 from drawer.models import MenuModel, MenuItemModel
 
@@ -36,12 +37,16 @@ def build_tree(parent, item, slug):
 
 @register.inclusion_tag("drawer/draw_menu.html", takes_context=True)
 def draw_menu(context, menu_name: str, slug: str | None = None):
-    menu = MenuModel.objects.prefetch_related("items").get(name=menu_name)
-    items = menu.items.all()
+    try:
+        menu = MenuModel.objects.prefetch_related("items").get(name=menu_name)
+        items = menu.items.all()
 
-    root = TreeNode()
-    for item in items:
-        if item.parent is None:
-            root.children.append(build_tree(root, item, slug))
+        root = TreeNode()
+        for item in items:
+            if item.parent is None:
+                root.children.append(build_tree(root, item, slug))
 
-    return {"menu": menu, "root": root}
+        return {"menu": menu, "root": root, "tree_error": False}
+
+    except ObjectDoesNotExist:
+        return {"menu": None, "root": None, "tree_error": True}

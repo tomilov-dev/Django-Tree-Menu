@@ -1,4 +1,12 @@
+{% if tree_error %}
+<div>
+  <h1>You should prepare menu data</h1>
+  <p>You can do it with Django command:</p>
+  <p>python3 -m manage create_testdata</p>
+</div>
+{% else %}
 <div>
   <h1>{{ menu.name }}</h1>
   {% include 'drawer/menu_node.html' with nodes=root.children %}
 </div>
+{% endif %}

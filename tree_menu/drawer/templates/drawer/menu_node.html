@@ -1,0 +1,10 @@
+{% for node in nodes %}
+<div>
+  <a href="{{ node.item.url }}">{{ node.item.name }}</a>
+  {% if node.opened %} {% if node.children %}
+  <div style="margin-left: 20px">
+    {% include 'drawer/menu_node.html' with nodes=node.children %}
+  </div>
+  {% endif %} {% endif %}
+</div>
+{% endfor %}
